@@ -14,21 +14,29 @@ activity_resources = db.Table('activity_resources',
 )
 
 class Resource(db.Model):
+    __tablename__ = 'resources';
+
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(50), nullable=False, unique=True)
     description = db.Column(db.String(255))
 
 class ContactResult(db.Model):
+    __tablename__ = 'contact_results';
+
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(50), nullable=False, unique=True)
     description = db.Column(db.String(255))
 
 class ContactType(db.Model):
+    __tablename__ = 'contact_types';
+
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(50), nullable=False, unique=True)
     description = db.Column(db.String(255))
 
 class ActivityLog(db.Model):
+    __tablename__ = 'activity_logs';
+
     id = db.Column(db.Integer(), primary_key=True)
     log_type = db.Column(db.String(255),  nullable=False)
     phone_number_used = db.Column(db.String(50))

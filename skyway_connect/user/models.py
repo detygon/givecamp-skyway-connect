@@ -3,11 +3,13 @@ from flask_security import UserMixin, RoleMixin
 import datetime
 
 roles_users = db.Table('roles_users',
-        db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
-        db.Column('role_id', db.Integer(), db.ForeignKey('role.id'))
+        db.Column('user_id', db.Integer(), db.ForeignKey('users.id')),
+        db.Column('role_id', db.Integer(), db.ForeignKey('roles.id'))
 )
 
 class Role(db.Model, RoleMixin):
+    __tablename__  = 'roles';
+
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(80), unique=True)
     description = db.Column(db.String(255))
@@ -15,8 +17,9 @@ class Role(db.Model, RoleMixin):
     def __unicode__(self):
         return '%s' % self.name
 
-
 class User(UserMixin, db.Model):
+    __tablename__  = 'users';
+
     id = db.Column(db.Integer(), primary_key=True)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
@@ -29,7 +32,7 @@ class User(UserMixin, db.Model):
 
 
     organization_id = db.Column(db.Integer(), db.ForeignKey('organizations.id'))
-    organization = db.relationship('Organization', backref='organizations')
+    organization = db.relationship('Organization', backref='organization')
     roles = db.relationship('Role', secondary=roles_users, backref=db.backref('users', lazy='dynamic'))
 
     #email confirmation

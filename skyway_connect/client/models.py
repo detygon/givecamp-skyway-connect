@@ -3,21 +3,29 @@ from ..extensions import db
 import datetime
 
 class Race(db.Model):
+    __tablename__ = 'races';
+
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(50), nullable=False, unique=True)
     description = db.Column(db.String(255))
 
 class ClientStatus(db.Model):
+    __tablename__ = 'client_statuses';
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False, unique=True)
     description = db.Column(db.String(255))
 
 class Gender(db.Model):
+    __tablename__ = 'genders';
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False, unique=True)
     description = db.Column(db.String(255))
 
 class Client(db.Model):
+    __tablename__ = 'clients';
+
     id = db.Column(db.Integer(), primary_key=True)
     last_name = db.Column(db.String(50))
     first_name = db.Column(db.String(50))
@@ -51,9 +59,6 @@ class Client(db.Model):
 
     meta = {
         'allow_inheritance': True,
-        'indexes': ['-created_at', 'email'],
-        'ordering': ['-created_at']
+        'indexes': ['-created_at'],
     }
-
-
 

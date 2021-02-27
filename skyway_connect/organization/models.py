@@ -2,20 +2,23 @@ from ..extensions import db
 import datetime
 
 class OutreachType(db.Model):
+    __tablename__ = 'outreach_types';
+
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
     description = db.Column(db.String(255))
 
 class Organization(db.Model):
+    __tablename__ = 'organizations';
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
     logo_url = db.Column(db.String(255))
     location = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.datetime.now,  nullable=False)
 
-    users = db.relationship('User', backref='user')
     outreach_type_id = db.Column(db.Integer(), db.ForeignKey('outreach_types.id'))
-    outreach_type = db.relationship('OutreachType', backref='outreach_types')
+    outreach_type = db.relationship('OutreachType')
 
 
     def __unicode__(self):

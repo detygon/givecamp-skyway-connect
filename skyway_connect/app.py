@@ -3,11 +3,13 @@
 from flask import Flask, render_template
 from skyway_connect.settings import ProdConfig
 from flask_security import Security, SQLAlchemyUserDatastore
+from skyway_connect.organization.models import OutreachType, Organization
 from skyway_connect.user.models import User, Role
 from skyway_connect.user.forms import ExtendedRegisterForm
 from skyway_connect.extensions import   cache,  db,  mail, debug_toolbar, migrate, session
 from skyway_connect.public.views import bp_public
 from skyway_connect.user.views import bp_user
+from skyway_connect.client.views import bp_client
 import skyway_connect.commands as commands
 
 def create_app(config_object=ProdConfig):
@@ -32,12 +34,19 @@ def register_extensions(app):
     debug_toolbar.init_app(app)
     migrate.init_app(app,db)
     session.init_app(app)
+
+    from skyway_connect.organization.models import OutreachType, Organization
+    from skyway_connect.client.models import Gender, ClientStatus, Race, Client
+    from skyway_connect.advertisement.models import Advertisement
+    from skyway_connect.activity_log.models import Resource, ContactResult, ContactType, ActivityLog
+
     return None
 
 
 def register_blueprints(app):
     app.register_blueprint(bp_public)
     app.register_blueprint(bp_user)
+    app.register_blueprint(bp_client)
     return None
 
 
@@ -57,7 +66,8 @@ def register_shellcontext(app):
         """Shell context objects."""
         return {
             'db': db,
-            'User': User}
+            'User': User,
+        }
 
     app.shell_context_processor(shell_context)
 
