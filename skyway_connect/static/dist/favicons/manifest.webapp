@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "name": "Skyway Connect",
+  "description": "Data Capture Application; Reporting",
+  "icons": {
+    "60": "/static/dist/favicons/firefox_app_60x60.png",
+    "128": "/static/dist/favicons/firefox_app_128x128.png",
+    "512": "/static/dist/favicons/firefox_app_512x512.png"
+  },
+  "developer": {
+    "name": "Givecamp Memphis",
+    "url": "https://www.givecampmemphis.org"
+  }
+}

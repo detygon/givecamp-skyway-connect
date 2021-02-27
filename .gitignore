@@ -1,0 +1,12 @@
+*.pyc
+.webassets-cache
+.idea
+celerybeat-schedule
+env
+.env
+local_settings.py
+node_modules/
+.DS_Store
+.sass-cache
+.vscode/
+.cache/
