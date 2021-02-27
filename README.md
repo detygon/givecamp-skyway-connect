@@ -17,7 +17,7 @@ Quickstart
 
     $ git clone git@github.com:detygon/givecamp-skyway-connect.git
 
-    $ cd skyway-connect
+    $ cd givecamp-skyway-connect
 
     $ virtualenv env
 
