@@ -14,5 +14,14 @@ def before_request():
 @bp_client.route('/', methods=['GET'])
 @login_required
 def get_clients():
-    clients = Client.query.get()
+    clients = Client.query.filter_by(organization_id = g.user.organization_id).get()
     return jsonify(clients)
+
+@bp_client.route('/', methods=['POST'])
+@login_required
+def create_client():
+    data = request.get_json()
+    client = Client(data)
+    client.organization_id = g.user.organization_id
+    client.save()
+    return jsonify(client)
