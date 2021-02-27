@@ -15,7 +15,7 @@ Quickstart
 
 
 
-    $ git clone git@github.com:givecamp/skyway-connect.git
+    $ git clone git@github.com:detygon/givecamp-skyway-connect.git
 
     $ cd skyway-connect
 
@@ -71,7 +71,7 @@ Running Celery
 
 you can add `-b` to activate Celery heartbeat (periodic tasks)
 
-A sample task that runs within the app context has been prepared for you within the `enfenro/tasks/__init__.py` file, this is helpful if you have background tasks that interact with your SQLAlchemy models.
+A sample task that runs within the app context has been prepared for you within the `skyway_connect/tasks/__init__.py` file, this is helpful if you have background tasks that interact with your SQLAlchemy models.
 
 
 
