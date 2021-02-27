@@ -12,9 +12,9 @@ class Config(object):
     DEBUG_TB_ENABLED = False  # Disable Debug toolbar
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     CACHE_TYPE = 'simple'  # Can be "memcached", "redis", etc.
-    SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/skyway_connect.db'
+    # SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/skyway_connect.db'
     # for postgres
-    # SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI', 'postgresql:///skyway_connect')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI', 'postgresql:///skyway_connect')
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
     CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', 'redis://localhost:6379/10')
